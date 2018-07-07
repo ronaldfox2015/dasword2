@@ -51,5 +51,10 @@ window.sortUsers = (users, orderBy, orderDireccion) => {
 }
 
 window.filterUsers = (users, search) => {
+    let result =  users.find(function (user) { 
+            
+            return user.name.search(search)+1
+     });
+     console.log(result)
 
 }

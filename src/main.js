@@ -59,6 +59,21 @@ window.addEventToCohortElem = (elem,cohortId,listCohort) => {
     })
   })
 };
+
+document.getElementById('searh').addEventListener('keyup', (event) => {
+  event.preventDefault();
+  // funcion para recorrer json users(obtener nombres de estudiantes)
+  ServiceApiRequest(urlUser,()=>{
+    listUser.setUsers(getCohortsUsers());
+    filterUsers(listUser.getUsers(),event.target.value)
+
+    for (const student of listUser.getUsers()) {
+      llenarlista("list-students","",student,student.name)
+      //addEventToUserElem(document.getElementById(student.id),cohortId,listCohort,listUser);
+    }
+  })
+})
+
 // agrgar evento a los elementos de la lista de estudiantes
 window.addEventToUserElem = (elem,cohortId,listCohort,listUse) => {
   elem.addEventListener('click', () => {
